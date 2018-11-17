@@ -15,11 +15,11 @@ public interface EnterEmployeeInfoContract
 
     interface presenter
     {
-        void addDateWorked(String id, String date, Double hoursWorked, Double wageWorked);
+        void addDateWorked(String date, Double hoursWorked, Double wageWorked);
 
-        void punch(String employeeId, PunchStatus status);
+        void punch(PunchStatus status);
 
-        void getPunchStatus(String employeeId);
+        void getPunchStatus();
 
     }
 

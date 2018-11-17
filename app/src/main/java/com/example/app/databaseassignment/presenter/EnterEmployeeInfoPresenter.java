@@ -19,20 +19,22 @@ import java.util.Locale;
 public class EnterEmployeeInfoPresenter implements EnterEmployeeInfoContract.presenter
 {
     private EnterEmployeeInfoContract.view view;
+    private String employeeId;
 
-    public EnterEmployeeInfoPresenter(EnterEmployeeInfoContract.view view)
+    public EnterEmployeeInfoPresenter(EnterEmployeeInfoContract.view view, String employeeId)
     {
         this.view = view;
+        this.employeeId = employeeId;
     }
 
     @Override
-    public void getPunchStatus(String id)
+    public void getPunchStatus()
     {
         final Database database = DatabaseManager.getDatabase();
 
         Query query = QueryBuilder.select(SelectResult.all())
                 .from(DataSource.database(database))
-                .where(Expression.property("EmployeeId").equalTo(Expression.string(id)));
+                .where(Expression.property("EmployeeId").equalTo(Expression.string(employeeId)));
         try
         {
             List<Result> results = query.execute().allResults();
@@ -65,11 +67,11 @@ public class EnterEmployeeInfoPresenter implements EnterEmployeeInfoContract.pre
     }
 
     @Override
-    public void addDateWorked(String id, String date, Double hoursWorked, Double wageWorked)
+    public void addDateWorked(String date, Double hoursWorked, Double wageWorked)
     {
         Database database = DatabaseManager.getDatabase();
 
-        MutableDocument document = database.getDocument("emp." + id).toMutable();
+        MutableDocument document = database.getDocument("emp." + employeeId).toMutable();
         MutableArray originalArray = document.getArray("HoursWorked").toMutable();
 
         MutableDictionary dictionary = new MutableDictionary();
@@ -95,7 +97,7 @@ public class EnterEmployeeInfoPresenter implements EnterEmployeeInfoContract.pre
     }
 
     @Override
-    public void punch(String employeeId, PunchStatus status)
+    public void punch(PunchStatus status)
     {
         Date punchDate = new Date();
         Database database = DatabaseManager.getDatabase();
@@ -117,7 +119,7 @@ public class EnterEmployeeInfoPresenter implements EnterEmployeeInfoContract.pre
                 else
                 {
                     view.updatePunchedOut();
-                    addDateWorked(employeeId, punchDate.toString(),
+                    addDateWorked(punchDate.toString(),
                             (double) calculateHoursWorked(), 10.50);
                 }
             }
@@ -135,7 +137,7 @@ public class EnterEmployeeInfoPresenter implements EnterEmployeeInfoContract.pre
 
         Query query = QueryBuilder.select(SelectResult.all())
                 .from(DataSource.database(database))
-                .where(Expression.property("EmployeeId").equalTo(Expression.string("1234")));
+                .where(Expression.property("EmployeeId").equalTo(Expression.string(employeeId)));
         try
         {
             List<Result> results = query.execute().allResults();
@@ -163,8 +165,6 @@ public class EnterEmployeeInfoPresenter implements EnterEmployeeInfoContract.pre
         }
         return null;
     }
-
-
 
     private int calculateHoursWorked()
     {

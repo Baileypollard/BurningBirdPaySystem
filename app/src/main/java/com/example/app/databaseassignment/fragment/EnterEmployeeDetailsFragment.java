@@ -46,10 +46,10 @@ public class EnterEmployeeDetailsFragment extends Fragment implements EnterEmplo
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState)
     {
-        presenter = new EnterEmployeeInfoPresenter(this);
-
         sharedPreference = new SharedPreference(getContext());
         employeeId = sharedPreference.getEmployeeId();
+
+        presenter = new EnterEmployeeInfoPresenter(this, employeeId);
 
         submitHoursButton = view.findViewById(R.id.submitHours_button);
         punchInButton = view.findViewById(R.id.punchIn_button);
@@ -72,8 +72,7 @@ public class EnterEmployeeDetailsFragment extends Fragment implements EnterEmplo
             @Override
             public void onClick(View v)
             {
-                presenter.addDateWorked(employeeId
-                        , dateEditText.getText().toString()
+                presenter.addDateWorked(dateEditText.getText().toString()
                         , Double.parseDouble(hoursWorkedEditText.getText().toString())
                         , Double.parseDouble(wageWorkedEditText.getText().toString()));
             }
@@ -108,7 +107,7 @@ public class EnterEmployeeDetailsFragment extends Fragment implements EnterEmplo
             @Override
             public void onClick(View v)
             {
-                presenter.punch(employeeId, PunchStatus.PUNCHED_IN);
+                presenter.punch(PunchStatus.PUNCHED_IN);
             }
         });
 
@@ -117,11 +116,11 @@ public class EnterEmployeeDetailsFragment extends Fragment implements EnterEmplo
             @Override
             public void onClick(View v)
             {
-                presenter.punch(employeeId, PunchStatus.PUNCHED_OUT);
+                presenter.punch(PunchStatus.PUNCHED_OUT);
             }
         });
 
-        presenter.getPunchStatus(employeeId);
+        presenter.getPunchStatus();
     }
 
     private void updateLabel()
