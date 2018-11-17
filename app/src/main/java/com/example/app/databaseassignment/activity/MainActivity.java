@@ -12,11 +12,13 @@ import android.widget.TextView;
 import com.couchbase.lite.CouchbaseLiteException;
 import com.example.app.databaseassignment.adapter.MainTabAdapter;
 import com.example.app.databaseassignment.util.DatabaseManager;
+import com.example.app.databaseassignment.util.SharedPreference;
 
 public class MainActivity extends AppCompatActivity
 {
     private ViewPager mainViewPager;
     private TabLayout mainTabLayout;
+    private SharedPreference sharedPreference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -53,6 +55,8 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
+
+        sharedPreference = new SharedPreference(getApplicationContext());
     }
 
     public void onClickLogout(View v)
@@ -63,6 +67,7 @@ public class MainActivity extends AppCompatActivity
         try
         {
             DatabaseManager.closeDatabase();
+            sharedPreference.setEmployeeId("");
         }
         catch (CouchbaseLiteException e)
         {

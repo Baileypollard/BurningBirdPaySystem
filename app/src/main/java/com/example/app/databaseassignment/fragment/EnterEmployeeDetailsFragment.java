@@ -17,6 +17,7 @@ import com.example.app.databaseassignment.activity.R;
 import com.example.app.databaseassignment.contract.EnterEmployeeInfoContract;
 import com.example.app.databaseassignment.presenter.EnterEmployeeInfoPresenter;
 import com.example.app.databaseassignment.util.DateUtil;
+import com.example.app.databaseassignment.util.SharedPreference;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -37,17 +38,26 @@ public class EnterEmployeeDetailsFragment extends Fragment implements EnterEmplo
 
     private TextView dateAddedSuccessTextView;
     private TextView punchTextView;
+    private TextView employeeIdTextView;
+
+    private SharedPreference sharedPreference;
+    private String employeeId;
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState)
     {
         presenter = new EnterEmployeeInfoPresenter(this);
 
+        sharedPreference = new SharedPreference(getContext());
+        employeeId = sharedPreference.getEmployeeId();
+
         submitHoursButton = view.findViewById(R.id.submitHours_button);
         punchInButton = view.findViewById(R.id.punchIn_button);
         punchOutButton = view.findViewById(R.id.punchOut_button);
 
         punchTextView = view.findViewById(R.id.punchedInOn_text);
+        employeeIdTextView = view.findViewById(R.id.employeeId_text);
+
         dateEditText = view.findViewById(R.id.dateWorked_edit);
 
         hoursWorkedEditText = view.findViewById(R.id.hoursWorked_edit);
@@ -55,12 +65,15 @@ public class EnterEmployeeDetailsFragment extends Fragment implements EnterEmplo
 
         dateAddedSuccessTextView = view.findViewById(R.id.successDateAdded_text);
 
+        employeeIdTextView.setText(employeeId);
+
         submitHoursButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                presenter.addDateWorked(dateEditText.getText().toString()
+                presenter.addDateWorked(employeeId
+                        , dateEditText.getText().toString()
                         , Double.parseDouble(hoursWorkedEditText.getText().toString())
                         , Double.parseDouble(wageWorkedEditText.getText().toString()));
             }
@@ -95,7 +108,7 @@ public class EnterEmployeeDetailsFragment extends Fragment implements EnterEmplo
             @Override
             public void onClick(View v)
             {
-                presenter.punch("1234", PunchStatus.PUNCHED_IN);
+                presenter.punch(employeeId, PunchStatus.PUNCHED_IN);
             }
         });
 
@@ -104,11 +117,11 @@ public class EnterEmployeeDetailsFragment extends Fragment implements EnterEmplo
             @Override
             public void onClick(View v)
             {
-                presenter.punch("1234", PunchStatus.PUNCHED_OUT);
+                presenter.punch(employeeId, PunchStatus.PUNCHED_OUT);
             }
         });
 
-        presenter.getPunchStatus();
+        presenter.getPunchStatus(employeeId);
     }
 
     private void updateLabel()

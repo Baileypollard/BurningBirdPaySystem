@@ -36,7 +36,7 @@ public class DatabaseManager
         }
     }
 
-    public static void beginDatabaseReplication(String username, String password, final LoginAttemptedCallback callback)
+    public static void beginDatabaseReplication(final String id, String password, final LoginAttemptedCallback callback)
     {
         URI url = null;
         try
@@ -51,7 +51,7 @@ public class DatabaseManager
         ReplicatorConfiguration config = new ReplicatorConfiguration(database, new URLEndpoint(url));
         config.setReplicatorType(ReplicatorConfiguration.ReplicatorType.PUSH_AND_PULL);
         config.setContinuous(true);
-        config.setAuthenticator(new BasicAuthenticator(username, password));
+        config.setAuthenticator(new BasicAuthenticator(id, password));
 
         replicator = new Replicator(config);
         replicator.addChangeListener(new ReplicatorChangeListener()
@@ -66,7 +66,7 @@ public class DatabaseManager
                 {
                     if (loginCallback != null)
                     {
-                        loginCallback.onLoginSuccess();
+                        loginCallback.onLoginSuccess(id);
                         loginCallback = null;
                     }
                     Log.e("Replication Comp Log", "Scheduler Completed");

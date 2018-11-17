@@ -25,15 +25,14 @@ public class EnterEmployeeInfoPresenter implements EnterEmployeeInfoContract.pre
         this.view = view;
     }
 
-
     @Override
-    public void getPunchStatus()
+    public void getPunchStatus(String id)
     {
         final Database database = DatabaseManager.getDatabase();
 
         Query query = QueryBuilder.select(SelectResult.all())
                 .from(DataSource.database(database))
-                .where(Expression.property("EmployeeId").equalTo(Expression.string("1234")));
+                .where(Expression.property("EmployeeId").equalTo(Expression.string(id)));
         try
         {
             List<Result> results = query.execute().allResults();
@@ -66,11 +65,11 @@ public class EnterEmployeeInfoPresenter implements EnterEmployeeInfoContract.pre
     }
 
     @Override
-    public void addDateWorked(String date, Double hoursWorked, Double wageWorked)
+    public void addDateWorked(String id, String date, Double hoursWorked, Double wageWorked)
     {
         Database database = DatabaseManager.getDatabase();
 
-        MutableDocument document = database.getDocument("emp.1234").toMutable();
+        MutableDocument document = database.getDocument("emp." + id).toMutable();
         MutableArray originalArray = document.getArray("HoursWorked").toMutable();
 
         MutableDictionary dictionary = new MutableDictionary();
@@ -90,7 +89,7 @@ public class EnterEmployeeInfoPresenter implements EnterEmployeeInfoContract.pre
         }
         catch (CouchbaseLiteException e)
         {
-
+            Log.e("Couchbase Error", "Error: " + e);
         }
 
     }
@@ -118,8 +117,8 @@ public class EnterEmployeeInfoPresenter implements EnterEmployeeInfoContract.pre
                 else
                 {
                     view.updatePunchedOut();
-
-                    addDateWorked(punchDate.toString(), (double) calculateHoursWorked(), 10.50);
+                    addDateWorked(employeeId, punchDate.toString(),
+                            (double) calculateHoursWorked(), 10.50);
                 }
             }
         }
@@ -160,7 +159,7 @@ public class EnterEmployeeInfoPresenter implements EnterEmployeeInfoContract.pre
         }
         catch (CouchbaseLiteException e)
         {
-
+            Log.e("Couchbase", "Error: " + e);
         }
         return null;
     }

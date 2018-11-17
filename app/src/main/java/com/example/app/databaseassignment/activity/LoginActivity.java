@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.app.databaseassignment.callback.LoginAttemptedCallback;
 import com.example.app.databaseassignment.util.DatabaseManager;
+import com.example.app.databaseassignment.util.SharedPreference;
 
 public class LoginActivity extends AppCompatActivity
 {
@@ -17,6 +18,7 @@ public class LoginActivity extends AppCompatActivity
     private EditText employeeIdEditText;
     private EditText employeePasswordEditText;
     private TextView loginErrorTextView;
+    private SharedPreference sharedPreference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -28,6 +30,8 @@ public class LoginActivity extends AppCompatActivity
         employeeIdEditText = (EditText) findViewById(R.id.employeeId_edit);
         employeePasswordEditText = (EditText) findViewById(R.id.employeePassword_edit);
         loginErrorTextView = (TextView) findViewById(R.id.login_error_text);
+
+        sharedPreference = new SharedPreference(getApplicationContext());
     }
 
     private LoginAttemptedCallback loginAttemptedCallback = new LoginAttemptedCallback()
@@ -40,9 +44,11 @@ public class LoginActivity extends AppCompatActivity
         }
 
         @Override
-        public void onLoginSuccess()
+        public void onLoginSuccess(String id)
         {
             //Start the main activity
+            sharedPreference.setEmployeeId(id);
+
             loginErrorTextView.setVisibility(View.GONE);
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
