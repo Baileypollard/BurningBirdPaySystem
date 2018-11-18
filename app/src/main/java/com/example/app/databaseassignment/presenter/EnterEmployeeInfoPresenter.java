@@ -110,7 +110,7 @@ public class EnterEmployeeInfoPresenter implements EnterEmployeeInfoContract.pre
         Date punchDate = new Date();
         Database database = DatabaseManager.getDatabase();
 
-        Document doc = database.getDocument("emp." + employeeId).toMutable();
+        Document doc = database.getDocument("emp." + employeeId);
 
         if (doc == null)
         {
@@ -118,6 +118,7 @@ public class EnterEmployeeInfoPresenter implements EnterEmployeeInfoContract.pre
         }
 
         MutableDocument document = doc.toMutable();
+        
         document.setString("PunchInStatus", status.getValue());
 
         document.setString(status.getDocTimeField(), punchDate.toString());
