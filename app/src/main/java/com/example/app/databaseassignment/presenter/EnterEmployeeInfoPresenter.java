@@ -71,7 +71,15 @@ public class EnterEmployeeInfoPresenter implements EnterEmployeeInfoContract.pre
     {
         Database database = DatabaseManager.getDatabase();
 
-        MutableDocument document = database.getDocument("emp." + employeeId).toMutable();
+        Document doc = database.getDocument("emp." + employeeId);
+
+        if (doc == null)
+        {
+            return;
+        }
+
+        MutableDocument document = doc.toMutable();
+
         MutableArray originalArray = document.getArray("HoursWorked").toMutable();
 
         MutableDictionary dictionary = new MutableDictionary();
@@ -102,8 +110,14 @@ public class EnterEmployeeInfoPresenter implements EnterEmployeeInfoContract.pre
         Date punchDate = new Date();
         Database database = DatabaseManager.getDatabase();
 
-        MutableDocument document = database.getDocument("emp." + employeeId).toMutable();
+        Document doc = database.getDocument("emp." + employeeId).toMutable();
 
+        if (doc == null)
+        {
+            return;
+        }
+
+        MutableDocument document = doc.toMutable();
         document.setString("PunchInStatus", status.getValue());
 
         document.setString(status.getDocTimeField(), punchDate.toString());

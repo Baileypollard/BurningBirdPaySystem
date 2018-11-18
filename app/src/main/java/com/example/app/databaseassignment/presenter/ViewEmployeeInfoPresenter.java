@@ -34,6 +34,12 @@ public class ViewEmployeeInfoPresenter implements ViewEmployeeInfoContract.prese
             public void changed(QueryChange change)
             {
                 ResultSet rows = change.getResults();
+
+                if (rows.allResults().size() == 0)
+                {
+                    return;
+                }
+
                 Dictionary dictionary = rows.allResults().get(0).getDictionary(0);
 
                 String employeeId = dictionary.getString("EmployeeId");

@@ -38,14 +38,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="fragment_enter_employee_info.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="fragment_enter_employee_info.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_enter_employee_info.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+            </state>
+          </provider>
           <provider editor-type-id="android-designer2">
             <state />
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ViewEmployeeInfoPresenter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/databaseassignment/presenter/ViewEmployeeInfoPresenter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="43" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
+            <state relative-caret-position="93">
+              <caret line="37" column="16" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EnterEmployeeInfoPresenter.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/databaseassignment/presenter/EnterEmployeeInfoPresenter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="116" column="19" selection-start-line="116" selection-start-column="19" selection-end-line="116" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EnterEmployeeDetailsFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/databaseassignment/fragment/EnterEmployeeDetailsFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="97">
+              <caret line="77" selection-start-line="77" selection-end-line="77" />
             </state>
           </provider>
         </entry>
@@ -1960,7 +1987,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/custom_toolbar.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/databaseassignment/PunchStatus.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/databaseassignment/presenter/ViewEmployeeInfoPresenter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/databaseassignment/util/DateUtil.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/databaseassignment/util/SharedPreferences.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/databaseassignment/util/SharedPreference.java" />
@@ -1969,9 +1995,10 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/databaseassignment/util/DatabaseManager.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/databaseassignment/activity/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/databaseassignment/contract/EnterEmployeeInfoContract.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/databaseassignment/presenter/EnterEmployeeInfoPresenter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/databaseassignment/fragment/EnterEmployeeDetailsFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_enter_employee_info.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/databaseassignment/presenter/ViewEmployeeInfoPresenter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/app/databaseassignment/presenter/EnterEmployeeInfoPresenter.java" />
       </list>
     </option>
   </component>
@@ -2019,7 +2046,7 @@
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="device.picker.selection" value="Nexus_S_API_25" />
+    <property name="device.picker.selection" value="4f5f0114" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/Git-2.19.1-64-bit.exe" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
@@ -2208,11 +2235,11 @@
       <window_info anchor="bottom" id="Run" order="8" sideWeight="0.49959514" weight="0.32899627" />
       <window_info anchor="bottom" id="Version Control" order="3" />
       <window_info anchor="bottom" id="Terminal" order="2" weight="0.32899627" />
-      <window_info anchor="bottom" id="Logcat" order="0" sideWeight="0.49959514" weight="0.36988848" />
+      <window_info active="true" anchor="bottom" id="Logcat" order="0" sideWeight="0.49959514" visible="true" weight="0.36988848" />
       <window_info id="Captures" order="7" weight="0.25" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="4" visible="true" weight="0.24939272" />
+      <window_info content_ui="combo" id="Project" order="4" visible="true" weight="0.24939272" />
       <window_info anchor="bottom" id="Build" order="4" sideWeight="0.49878544" weight="0.46282527" />
       <window_info anchor="right" id="Gradle" order="2" />
       <window_info id="Structure" order="5" side_tool="true" weight="0.25" />
@@ -2445,13 +2472,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="46" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="46" />
         </state>
+      </provider>
+      <provider editor-type-id="android-manifest">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_view_employee_info.xml">
@@ -2499,13 +2526,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/databaseassignment/presenter/ViewEmployeeInfoPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="61" column="27" selection-start-line="61" selection-start-column="27" selection-end-line="61" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/databaseassignment/activity/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -2534,24 +2554,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/databaseassignment/presenter/EnterEmployeeInfoPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="70" column="5" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/databaseassignment/fragment/EnterEmployeeDetailsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1003">
-          <caret line="80" column="17" selection-start-line="80" selection-start-column="17" selection-end-line="80" selection-end-column="17" />
-          <folding>
-            <element signature="e#2512#2897#0" expanded="true" />
-            <element signature="e#2896#2897#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/databaseassignment/contract/ViewEmployeeInfoContract.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -2575,12 +2577,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_enter_employee_info.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="43" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
+        <state relative-caret-position="17">
+          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/databaseassignment/presenter/ViewEmployeeInfoPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="37" column="16" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/databaseassignment/fragment/EnterEmployeeDetailsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97">
+          <caret line="77" selection-start-line="77" selection-end-line="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/app/databaseassignment/presenter/EnterEmployeeInfoPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="116" column="19" selection-start-line="116" selection-start-column="19" selection-end-line="116" selection-end-column="19" />
+        </state>
       </provider>
     </entry>
   </component>
