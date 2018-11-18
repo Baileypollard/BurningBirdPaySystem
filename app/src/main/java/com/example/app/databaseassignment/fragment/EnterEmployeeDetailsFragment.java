@@ -72,9 +72,13 @@ public class EnterEmployeeDetailsFragment extends Fragment implements EnterEmplo
             @Override
             public void onClick(View v)
             {
-                presenter.addDateWorked(dateEditText.getText().toString()
-                        , Double.parseDouble(hoursWorkedEditText.getText().toString())
-                        , Double.parseDouble(wageWorkedEditText.getText().toString()));
+                if (dateEditText.getText().length() != 0 && hoursWorkedEditText.getText().length() != 0
+                        && wageWorkedEditText.getText().length() != 0)
+                {
+                    presenter.addDateWorked(dateEditText.getText().toString()
+                            , Double.parseDouble(hoursWorkedEditText.getText().toString())
+                            , Double.parseDouble(wageWorkedEditText.getText().toString()));
+                }
             }
         });
 
