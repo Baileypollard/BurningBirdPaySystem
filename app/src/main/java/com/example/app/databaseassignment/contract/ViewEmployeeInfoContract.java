@@ -11,6 +11,6 @@ public interface ViewEmployeeInfoContract
 
     interface presenter
     {
-        void fetchEmployeeInformation();
+        void fetchEmployeeInformation(String id);
     }
 }

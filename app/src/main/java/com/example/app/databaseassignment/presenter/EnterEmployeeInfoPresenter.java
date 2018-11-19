@@ -118,7 +118,7 @@ public class EnterEmployeeInfoPresenter implements EnterEmployeeInfoContract.pre
         }
 
         MutableDocument document = doc.toMutable();
-        
+
         document.setString("PunchInStatus", status.getValue());
 
         document.setString(status.getDocTimeField(), punchDate.toString());

@@ -20,13 +20,13 @@ public class ViewEmployeeInfoPresenter implements ViewEmployeeInfoContract.prese
     }
 
     @Override
-    public void fetchEmployeeInformation()
+    public void fetchEmployeeInformation(String id)
     {
         final Database database = DatabaseManager.getDatabase();
 
         Query query = QueryBuilder.select(SelectResult.all())
                 .from(DataSource.database(database))
-                .where(Expression.property("EmployeeId").equalTo(Expression.string("1234")));
+                .where(Expression.property("EmployeeId").equalTo(Expression.string(id)));
 
         query.addChangeListener(new QueryChangeListener()
         {
@@ -34,11 +34,6 @@ public class ViewEmployeeInfoPresenter implements ViewEmployeeInfoContract.prese
             public void changed(QueryChange change)
             {
                 ResultSet rows = change.getResults();
-
-                if (rows.allResults().size() == 0)
-                {
-                    return;
-                }
 
                 Dictionary dictionary = rows.allResults().get(0).getDictionary(0);
 

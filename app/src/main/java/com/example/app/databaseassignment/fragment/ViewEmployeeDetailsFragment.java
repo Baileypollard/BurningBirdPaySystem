@@ -15,17 +15,20 @@ import com.example.app.databaseassignment.adapter.DateWorkedRecyclerViewAdapter;
 import com.example.app.databaseassignment.contract.ViewEmployeeInfoContract;
 import com.example.app.databaseassignment.model.Employee;
 import com.example.app.databaseassignment.presenter.ViewEmployeeInfoPresenter;
+import com.example.app.databaseassignment.util.SharedPreference;
 
 public class ViewEmployeeDetailsFragment extends Fragment implements ViewEmployeeInfoContract.view
 {
     private ViewEmployeeInfoContract.presenter presenter;
     private TextView firstName;
     private TextView lastName;
-    private TextView employeeId;
+    private TextView employeeIdTextView;
     private TextView middleName;
 
     private RecyclerView datesWorkedRecyclerView;
     private DateWorkedRecyclerViewAdapter adapter;
+
+    private String employeeId;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -37,11 +40,12 @@ public class ViewEmployeeDetailsFragment extends Fragment implements ViewEmploye
     public void onViewCreated(View view, Bundle savedInstanceState)
     {
         presenter = new ViewEmployeeInfoPresenter(this);
+        SharedPreference sharedPreference = new SharedPreference(getContext());
 
         firstName = (TextView) view.findViewById(R.id.employeeFirstName_text);
         lastName = (TextView) view.findViewById(R.id.employeeLastName_text);
         middleName = (TextView) view.findViewById(R.id.employeeMiddleName_text);
-        employeeId = (TextView) view.findViewById(R.id.employeeId_text);
+        employeeIdTextView = (TextView) view.findViewById(R.id.employeeId_text);
 
         datesWorkedRecyclerView = (RecyclerView) view.findViewById(R.id.dateWorked_recycle);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(view.getContext());
@@ -51,7 +55,8 @@ public class ViewEmployeeDetailsFragment extends Fragment implements ViewEmploye
         adapter = new DateWorkedRecyclerViewAdapter(getContext());
         datesWorkedRecyclerView.setAdapter(adapter);
 
-        presenter.fetchEmployeeInformation();
+        employeeId = sharedPreference.getEmployeeId();
+        presenter.fetchEmployeeInformation(employeeId);
     }
 
     @Override
@@ -60,7 +65,7 @@ public class ViewEmployeeDetailsFragment extends Fragment implements ViewEmploye
         firstName.setText(e.getFirstName());
         middleName.setText(e.getMiddleName());
         lastName.setText(e.getLastName());
-        employeeId.setText(e.getId());
+        employeeIdTextView.setText(e.getId());
 
         adapter.setDatesWorked(e.getDatesWorked());
     }
